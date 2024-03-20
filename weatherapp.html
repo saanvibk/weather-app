@@ -71,7 +71,8 @@
         <div class=" d-flex flex-column m-5 p-5">
             <input type="text" class="neo rounded-pill" id="location" placeholder="    Enter Location" size="75%"
                 style="line-height: 2;border: 2px solid black;border-radius: 10px;line-height:50px;font-size: 15px;">
-            <button class="btn neo btn-primary btn-outline-success text-light mt-3 mx-auto d-flex">Submit</button> <br>
+            <button onclick="getWeather()"
+                class="btn neo btn-primary btn-outline-success text-light mt-3 mx-auto d-flex">Submit</button> <br>
         </div>
         <div class="row">
             <div class="col-lg-4">
@@ -80,8 +81,7 @@
                 <div class="card bg-light mx-auto  text-center neo  " id="bg">
                     <div class="card-body">
                         <h2 id="cityName">Shivamogga</h2>
-                        <span class="h4" id="country">India</span><span><img
-                                src="https://flagcdn.com/16x12/in.png"></span>
+                        <span class="h4" id="country">India</span>
                     </div>
                 </div>
             </div>
@@ -91,8 +91,9 @@
                 <div class="card bg-light mt-2 mb-2 uniform neo  " id="bg">
                     <div class="card-body uniform">
                         <div class="row mt-3">
-                            <div class="col-lg-6 "><img src="./img/clear-day.svg" style="margin-left: 60px;" class="img"
-                                    id="main" alt="day-type">
+                            <div class="col-lg-6 ">
+                                <img src="./img/clear-day.svg" style="margin-left: 60px;" class="img" id="main"
+                                    alt="day-type">
                                 <span id="description" class="text-center">clear</span>
                             </div>
                             <div class="col-lg-6 ">
@@ -156,6 +157,9 @@
 
         </footer>
     </div>
+    <script>
+        let location = document.getElementById("location").value
+    </script>
 </body>
 
 </html>
