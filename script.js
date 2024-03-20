@@ -5,7 +5,7 @@ function getWeather() {
     const data = fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=2d0abadf28f4c24129fb4b49b93514bc`);
     data.then(res => res.json()).then(data => {
 
-
+        //getting static fields and perfoming object manipulation//
         document.getElementById("city").innerHTML = + data.name
         document.getElementById("humidity").innerHTML = "humidity " + data.main.humidity + "%";
         document.getElementById("description").innerHTML = data.weather[0].description
@@ -20,12 +20,22 @@ function getWeather() {
         document.getElementById("wind").innerHTML = data.wind.speed + "m/s"
         document.getElementById("deg").innerHTML = data.wind.deg + "&deg"
 
+        //get sunrise time with Date//
 
-        let sunRise = data.sys.sunrise
-        const date = new Date(sunrise * 1000)
-        console.log("date", date);
-        console.log("date in num", date.toLocaleDateString());
-        console.log("with time", date.toLocaleString());
+        let sunRise = data.sys.sunrise;
+        const rise = new Date(sunRise * 1000)
+        console.log("with time", date.toTimeString());
+
+
+        //get sunset time with Date//
+
+        let sunSet = data.sys.sunrise;
+        const set = new Date(sunRise * 1000)
+        console.log("with time", date.toTimeString());
+
+
+
+        //dynamically calling icons into html with a link//
 
         let icon = data.weather[0].icon;
         let iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`
