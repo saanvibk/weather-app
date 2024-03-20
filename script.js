@@ -13,7 +13,7 @@ function getWeather() {
         document.getElementById("humidity").innerHTML = "humidity " + data.main.humidity + "%";
         document.getElementById("country").innerHTML = data.sys.country;
         document.getElementById("temp").innerHTML = data.main.temp
-        document.getElementById("feellike").innerHTML = data.main.feels_like
+        document.getElementById("feelLike").innerHTML = data.main.feels_like
         document.getElementById("maxTemp").innerHTML = data.main.temp_min
         document.getElementById("minTemp").innerHTML = data.main.temp_max
         document.getElementById("sunRise").innerHTML = data.sys.sunrise
