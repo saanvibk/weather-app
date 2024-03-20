@@ -8,7 +8,7 @@ function getWeather() {
 
         document.getElementById("cityName").innerHTML = + data.name
         document.getElementById("humidity").innerHTML = "humidity " + data.main.humidity + "%";
-        document.getElementById("description").innerHTML = data.weather.description
+        document.getElementById("description").innerHTML = data.weather[0].description
         document.getElementById("icon").innerHTML = data.weather[0].icon
         document.getElementById("country").innerHTML = data.sys.country;
         document.getElementById("temp").innerHTML = data.main.temp + "<span>&#8451;</span>"
