@@ -9,7 +9,7 @@ function getWeather() {
         document.getElementById("cityName").innerHTML = + data.name
         document.getElementById("humidity").innerHTML = "humidity " + data.main.humidity + "%";
         document.getElementById("description").innerHTML = data.weather.description
-        document.getElementById("icon").innerHTML = data.weather.icon
+        document.getElementById("icon").innerHTML = data.weather[0].icon
         document.getElementById("country").innerHTML = data.sys.country;
         document.getElementById("temp").innerHTML = data.main.temp + "<span>&#8451;</span>"
         document.getElementById("feelLike").innerHTML = data.main.feels_like + "<span>&#8451;</span>"
@@ -17,12 +17,11 @@ function getWeather() {
         document.getElementById("minTemp").innerHTML = data.main.temp_min + "<span>&#8451;</span>"
         document.getElementById("sunRise").innerHTML = data.sys.sunrise
         document.getElementById("sunSet").innerHTML = data.sys.sunset
-        document.getElementById("wind").innerHTML = data.wind.speed
+        document.getElementById("wind").innerHTML = data.wind.speed + "m/s"
         document.getElementById("deg").innerHTML = data.wind.deg + "&deg"
 
 
-
-        let icon = data.weather.icon;
+        let icon = data.weather[0].icon;
         let iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`
         document.getElementById("icon").innerHTML = `<img src="${iconUrl}" alt="Icon">`;
     }).catch(
