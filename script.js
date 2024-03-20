@@ -6,7 +6,7 @@ function getWeather() {
     data.then(res => res.json()).then(data => {
 
 
-        document.getElementById("cityName").innerHTML = + data.name
+        document.getElementById("city").innerHTML = + data.name
         document.getElementById("humidity").innerHTML = "humidity " + data.main.humidity + "%";
         document.getElementById("description").innerHTML = data.weather[0].description
         document.getElementById("icon").innerHTML = data.weather[0].icon
@@ -20,6 +20,12 @@ function getWeather() {
         document.getElementById("wind").innerHTML = data.wind.speed + "m/s"
         document.getElementById("deg").innerHTML = data.wind.deg + "&deg"
 
+
+        let sunRise = data.sys.sunrise
+        const date = new Date(sunrise * 1000)
+        console.log("date", date);
+        console.log("date in num", date.toLocaleDateString());
+        console.log("with time", date.toLocaleString());
 
         let icon = data.weather[0].icon;
         let iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`
