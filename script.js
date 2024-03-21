@@ -6,7 +6,7 @@ function getWeather() {
     data.then(res => res.json()).then(data => {
 
         //getting static fields and persoming object mnanipulation//
-        document.getElementById("city").innerHTML = + data.name
+        document.getElementById("city").innerHTML = data.name
         document.getElementById("humidity").innerHTML = "humidity " + data.main.humidity + "%";
         document.getElementById("description").innerHTML = data.weather[0].description
         document.getElementById("country").innerHTML = data.sys.country;
@@ -20,7 +20,8 @@ function getWeather() {
         //get sunrise time with Date
         let sunRise = data.sys.sunrise;
         let rise = new Date(sunRise * 1000)
-        console.log("with time", rise.toTimeString());
+        let riseoption = { hour: 'numeric', }
+        console.log(rise.toDateString);
         document.getElementById("sunRise").innerHTML = rise
         console.log(rise)
 
@@ -29,7 +30,9 @@ function getWeather() {
         let sunSet = data.sys.sunrise;
         console.log(sunSet)
         let set = new Date(sunRise * 1000)
-        console.log("with time", set.toTimeString());
+        let setoption = { hour: 'numeric', hour12: true }
+
+        console.log("with time", set.toDateString('en-us',));
         document.getElementById("sunSet").innerHTML = set
         console.log(set)
 
