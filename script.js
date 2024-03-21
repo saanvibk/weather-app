@@ -19,10 +19,10 @@ function getWeather() {
 
         //get sunrise time with Date
         let sunRise = data.sys.sunrise;
-        console.log(sunRise)
         const rise = new Date(sunRise * 1000)
         console.log("with time", date.toTimeString());
         document.getElementById("sunRise").innerHTML = rise
+        console.log(rise)
 
         //get sunset time with Date//
 
@@ -30,6 +30,8 @@ function getWeather() {
         console.log(sunSet)
         const set = new Date(sunRise * 1000)
         document.getElementById("sunSet").innerHTML = set
+        console.log(set)
+
 
 
 
