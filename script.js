@@ -24,7 +24,7 @@ function getWeather() {
         //get sunrise time with Date
         let sunRise = data.sys.sunrise;
         let rise = new Date(sunRise * 1000)
-        let riseoption = { hour: 'numeric', }
+        let riseoption = { hour: 'numeric', hour12: true}
         console.log(rise.toDateString);
         document.getElementById("sunRise").innerHTML = rise
         console.log(rise)
@@ -33,7 +33,7 @@ function getWeather() {
 
         let sunSet = data.sys.sunset;
         console.log(sunSet)
-        let set = new Date(sunRise * 1000)
+        let set = new Date(sunSet * 1000)
         let setoption = { hour: 'numeric', hour12: true }
 
         console.log("with time", set.toDateString('en-us',));
