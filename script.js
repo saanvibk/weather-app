@@ -1,3 +1,8 @@
+document
+
+
+
+
 function getWeather() {
 
     let location = document.getElementById("location").value
@@ -16,6 +21,7 @@ function getWeather() {
         document.getElementById("minTemp").innerHTML = data.main.temp_min + "<span>&#8451;</span>"
         document.getElementById("wind").innerHTML = data.wind.speed + "m/s"
         document.getElementById("deg").innerHTML = data.wind.deg + "&deg"
+
 
         //get sunrise time with Date
         let sunRise = data.sys.sunrise;
@@ -43,6 +49,19 @@ function getWeather() {
         let icon = data.weather[0].icon;
         let iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`
         document.getElementById("icon").innerHTML = `<img src="${iconUrl}" alt="Icon">`;
+
+
+
+
+        let collection = document.getElementsByClassName("card");
+        for (let i = 0; i < collection.length; i++) {
+            collection[i].style.opacity = "1";
+        }
+
+
+
+
+
     }).catch(
         console.log("cannot fetch weather")
     );
