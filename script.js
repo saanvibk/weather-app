@@ -1,5 +1,3 @@
-document
-
 
 
 
@@ -33,7 +31,7 @@ function getWeather() {
 
         //get sunset time with Date//
 
-        let sunSet = data.sys.sunrise;
+        let sunSet = data.sys.sunset;
         console.log(sunSet)
         let set = new Date(sunRise * 1000)
         let setoption = { hour: 'numeric', hour12: true }
