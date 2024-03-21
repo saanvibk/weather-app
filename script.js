@@ -52,14 +52,11 @@ function getWeather() {
 
 
 
-
+        //making card pop on search
         let collection = document.getElementsByClassName("card");
         for (let i = 0; i < collection.length; i++) {
             collection[i].style.opacity = "1";
         }
-
-
-
 
 
     }).catch(
