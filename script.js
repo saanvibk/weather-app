@@ -15,7 +15,7 @@ function getWeather() {
         document.getElementById("maxTemp").innerHTML = data.main.temp_max + "<span>&#8451;</span>"
         document.getElementById("minTemp").innerHTML = data.main.temp_min + "<span>&#8451;</span>"
         document.getElementById("wind").innerHTML = data.wind.speed + "m/s"
-        document.getElementById("deg").innerHTML = data.wind.deg + "&deg"
+        document.getElementById("deg").innerHTML = data.wind.deg + "&deg"   
 
 
         //get sunrise time with Date
