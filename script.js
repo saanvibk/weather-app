@@ -1,8 +1,3 @@
-document
-
-
-
-
 function getWeather() {
 
     let location = document.getElementById("location").value
@@ -11,8 +6,8 @@ function getWeather() {
     data.then(res => res.json()).then(data => {
 
         //getting static fields and persoming object mnanipulation//
-        document.getElementById("city").innerHTML = "City:  " + data.name
-        document.getElementById("humidity").innerHTML = "humidity:  " + data.main.humidity + "%";
+        document.getElementById("city").innerHTML = data.name
+        document.getElementById("humidity").innerHTML = "humidity " + data.main.humidity + "%";
         document.getElementById("description").innerHTML = data.weather[0].description
         document.getElementById("country").innerHTML = data.sys.country;
         document.getElementById("temp").innerHTML = data.main.temp + "<span>&#8451;</span>"
@@ -26,17 +21,21 @@ function getWeather() {
         //get sunrise time with Date
         let sunRise = data.sys.sunrise;
         let rise = new Date(sunRise * 1000)
-        let riseoption = { hour: 'numeric', }
+        let riseoption = { hour: 'numeric' }
+        console.log(rise.toDateString);
         document.getElementById("sunRise").innerHTML = rise
+        console.log(rise)
 
         //get sunset time with Date//
 
         let sunSet = data.sys.sunset;
+        console.log(sunSet)
         let set = new Date(sunSet * 1000)
         let setoption = { hour: 'numeric', hour12: true }
 
-        console.log("with time", set.toDateString('en-us',));
+        console.log("with time", set.toDateString('en-us'));
         document.getElementById("sunSet").innerHTML = set
+        console.log(set)
 
 
 
@@ -56,7 +55,7 @@ function getWeather() {
 
 
     }).catch(
-        console.log("cannot find city")
+        console.log("cannot fetch weather")
     );
 
 }
