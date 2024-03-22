@@ -73,7 +73,9 @@
     </div>
     <div class="container-fluid">
         <div class=" d-flex flex-column m-5 p-5">
-            <input type="text" class="neo rounded-pill" id="location" placeholder="    Enter Location" size="100%"
+            <p style="color: red;font-size: 20px;" id="msg" class=" text-center"></p>
+            <input type="text" class="neo rounded-pill" id="location" placeholder="    Enter Location"
+                autocomplete="false" size="100%"
                 style="line-height: 2;border: 2px solid black;border-radius: 10px;line-height:50px;font-size: 15px;">
             <button onclick="getWeather()"
                 class="btn h4 neo btn-primary btn-outline-success text-light mt-3 mx-auto d-flex">Submit</button> <br>
