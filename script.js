@@ -38,16 +38,6 @@ function getWeather() {
         console.log(set)
 
 
-
-
-
-
-
-
-
-        
-
-
         //dynamically calling icons into html with a link//
         let icon = data.weather[0].icon;
         let iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`
