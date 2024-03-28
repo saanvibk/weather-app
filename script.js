@@ -21,13 +21,13 @@ function getWeather() {
         //get sunrise time with Date
         let sunRise = data.sys.sunrise;
         let rise = new Date(sunRise * 1000)
-        let riseoption = { hour: 'numeric' }
+        let riseoption = { hour: 'numeric',hour12:true}
         console.log(rise.toDateString);
         document.getElementById("sunRise").innerHTML = rise
         console.log(rise)
 
-        //get sunset time with Date//
 
+        //get sunset time with Date//
         let sunSet = data.sys.sunset;
         console.log(sunSet)
         let set = new Date(sunSet * 1000)
@@ -45,7 +45,7 @@ function getWeather() {
 
 
 
-        //making card pop on search
+        //making cards pop on search
         let collection = document.getElementsByClassName("card");
         for (let i = 0; i < collection.length; i++) {
             collection[i].style.opacity = "1";
