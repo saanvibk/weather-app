@@ -9,14 +9,12 @@ function getWeather() {
 
 
         //handling city not found error
-        if(data.cod!=200)
-        {
-            document.getElementById("msg").innerHTML="City not Found"
+        if (data.cod != 200) {
+            document.getElementById("msg").innerHTML = "City not Found"
             return
         }
-        else
-        {
-            document.getElementById("msg").innerHTML=" "
+        else {
+            document.getElementById("msg").innerHTML = " "
         }
 
 
@@ -38,7 +36,7 @@ function getWeather() {
         //get sunrise time with Date
         let sunRise = data.sys.sunrise;
         let rise = new Date(sunRise * 1000)
-        let riseoption = { hour: 'numeric',hour12:true}
+        let riseoption = { hour: 'numeric', hour12: true }
         console.log(rise.toDateString);
         document.getElementById("sunRise").innerHTML = rise
         console.log(rise)
@@ -72,7 +70,7 @@ function getWeather() {
 
 
 
-        
+
 
     }).catch(
         console.log("cannot fetch weather")
