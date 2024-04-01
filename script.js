@@ -5,6 +5,23 @@ function getWeather() {
     const data = fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=2d0abadf28f4c24129fb4b49b93514bc`);
     data.then(res => res.json()).then(data => {
 
+
+
+
+        //handling city not found error
+        if(data.cod!=200)
+        {
+            document.getElementById("msg").innerHTML="City not Found"
+            return
+        }
+        else
+        {
+            document.getElementById("msg").innerHTML=" "
+        }
+
+
+
+
         //getting static fields and persoming object mnanipulation//
         document.getElementById("city").innerHTML = data.name
         document.getElementById("humidity").innerHTML = "humidity " + data.main.humidity + "%";
@@ -51,6 +68,11 @@ function getWeather() {
             collection[i].style.opacity = "1";
         }
 
+
+
+
+
+        
 
     }).catch(
         console.log("cannot fetch weather")
