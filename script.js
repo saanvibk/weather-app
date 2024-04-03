@@ -1,79 +1,82 @@
 function getWeather() {
+  let location = document.getElementById('location').value;
+  console.log('getting weather for city : ' + location);
 
-    let location = document.getElementById("location").value
-    console.log("getting weather for city : " + location);
-    const data = fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=2d0abadf28f4c24129fb4b49b93514bc`);
-    data.then(res => res.json()).then(data => {
+  const data = fetch(
+    `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=3e071983b05c0f317a61806dd16394db`,
+  );
+  data
+    .then((res) => res.json())
+    .then((data) => {
+      //handling city not found error
+      if (data.cod != 200) {
+        document.getElementById('msg').innerHTML = 'City not Found';
+        return;
+      } else {
+        document.getElementById('msg').innerHTML = ' ';
+      }
 
+      //getting static fields and persoming object mnanipulation//
+      document.getElementById('city').innerHTML = data.name;
 
+      document.getElementById('humidity').innerHTML =
+        'humidity ' + data.main.humidity + '%';
 
+      document.getElementById('description').innerHTML =
+        data.weather[0].description;
 
-        //handling city not found error
-        if (data.cod != 200) {
-            document.getElementById("msg").innerHTML = "City not Found"
-            return
-        }
-        else {
-            document.getElementById("msg").innerHTML = " "
-        }
+      document.getElementById('country').innerHTML = data.sys.country;
 
+      document.getElementById('temp').innerHTML =
+        data.main.temp + '<span>&#8451;</span>';
 
+      document.getElementById('feelLike').innerHTML =
+        data.main.feels_like + '<span>&#8451;</span>';
 
+      document.getElementById('maxTemp').innerHTML =
+        data.main.temp_max + '<span>&#8451;</span>';
 
-        //getting static fields and persoming object mnanipulation//
-        document.getElementById("city").innerHTML = data.name
-        document.getElementById("humidity").innerHTML = "humidity " + data.main.humidity + "%";
-        document.getElementById("description").innerHTML = data.weather[0].description
-        document.getElementById("country").innerHTML = data.sys.country;
-        document.getElementById("temp").innerHTML = data.main.temp + "<span>&#8451;</span>"
-        document.getElementById("feelLike").innerHTML = data.main.feels_like + "<span>&#8451;</span>"
-        document.getElementById("maxTemp").innerHTML = data.main.temp_max + "<span>&#8451;</span>"
-        document.getElementById("minTemp").innerHTML = data.main.temp_min + "<span>&#8451;</span>"
-        document.getElementById("wind").innerHTML = data.wind.speed + "m/s"
-        document.getElementById("deg").innerHTML = data.wind.deg + "&deg"
+      document.getElementById('minTemp').innerHTML =
+        data.main.temp_min + '<span>&#8451;</span>';
 
+      document.getElementById('wind').innerHTML = data.wind.speed + 'm/s';
 
-        //get sunrise time with Date
-        let sunRise = data.sys.sunrise;
-        let rise = new Date(sunRise * 1000)
-        let riseoption = { hour: 'numeric', hour12: true }
-        console.log(rise.toDateString);
-        document.getElementById("sunRise").innerHTML = rise
-        console.log(rise)
+      document.getElementById('deg').innerHTML = data.wind.deg + '&deg';
 
+      //get sunrise time with Date
+      let sunRise = data.sys.sunrise;
+      let rise = new Date(sunRise * 1000);
+      let riseoption = { hour: 'numeric', hour12: true };
+      console.log(rise.toDateString);
+      document.getElementById('sunRise').innerHTML = rise;
+      console.log(rise);
 
-        //get sunset time with Date//
-        let sunSet = data.sys.sunset;
-        console.log(sunSet)
-        let set = new Date(sunSet * 1000)
-        let setoption = { hour: 'numeric', hour12: true }
+      //get sunset time with Date//
+      let sunSet = data.sys.sunset;
+      console.log(sunSet);
+      let set = new Date(sunSet * 1000);
+      let setoption = { hour: 'numeric', hour12: true };
 
-        console.log("with time", set.toDateString('en-us'));
-        document.getElementById("sunSet").innerHTML = set
-        console.log(set)
+      console.log('with time', set.toDateString('en-us'));
+      document.getElementById('sunSet').innerHTML = set;
+      console.log(set);
 
+      //dynamically calling icons into html with a link//
+      let icon = data.weather[0].icon;
+      let iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
 
-        //dynamically calling icons into html with a link//
-        let icon = data.weather[0].icon;
-        let iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`
-        document.getElementById("icon").innerHTML = `<img src="${iconUrl}" alt="Icon">`;
+      document.getElementById(
+        'icon',
+      ).innerHTML = `<img src="${iconUrl}" alt="Icon">`;
 
+      //making cards pop on search
+      let collection = document.getElementsByClassName('card');
+      for (let i = 0; i < collection.length; i++) {
+        collection[i].style.opacity = '1';
+      }
+    })
 
-
-        //making cards pop on search
-        let collection = document.getElementsByClassName("card");
-        for (let i = 0; i < collection.length; i++) {
-            collection[i].style.opacity = "1";
-        }
-
-
-
-
-
-
-
-    }).catch(
-        console.log("cannot fetch weather")
-    );
-
+    .catch((err) => {
+      console.log('Cannot fetch weather', err);
+    });
 }
